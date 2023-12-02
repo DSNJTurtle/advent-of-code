@@ -48,7 +48,3 @@ def run() -> None:
     assert part_a(read_input_to_list(__file__, read_test_input=True)) == 281
 
     print("done")
-
-
-if __name__ == "__main":
-    run()
