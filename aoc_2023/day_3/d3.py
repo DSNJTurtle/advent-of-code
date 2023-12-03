@@ -6,12 +6,9 @@ from aoc_2023.commons.commons import read_input_to_list
 
 
 def get_matrix(lines: List[str]) -> List[List[str]]:
-    n_rows = len(lines)
-    n_cols = len(lines[0])
-    m = [["." for j in range(n_cols)] for i in range(n_rows)]
-
-    for i, l in enumerate(lines):
-        row = []
+    m = []
+    for l in lines:
+        incomplete_row = []
         cur_s = ""
         for s in l:
             if str(s).isdigit():
@@ -19,20 +16,22 @@ def get_matrix(lines: List[str]) -> List[List[str]]:
 
             else:
                 if len(cur_s) > 0:
-                    row.append(cur_s)
+                    incomplete_row.append(cur_s)
                     cur_s = ""
 
-                row.append(s)
+                incomplete_row.append(s)
 
         if len(cur_s) > 0:  # number at end of row
-            row.append(cur_s)
+            incomplete_row.append(cur_s)
 
-        row2 = []
-        for p in row:
-            row2.extend([p] * len(p))
+        complete_row = []
+        for p in incomplete_row:
+            complete_row.extend([p] * len(p))
 
-        for j, r in enumerate(row2):
-            m[i][j] = r
+        m.append(complete_row)
+
+    assert len(m) == len(lines)
+    assert len(set([len(r) for r in m])) == 1
 
     return m
 
@@ -43,7 +42,7 @@ def get_nums_from_submatrix(m, i, j) -> List[str]:
         a.append(rr[np.max(j - 1, 0) : j + 2])
 
     assert len(a) == 3
-    assert len(a[0]) == 3
+    assert all([len(r) == 3 for r in a])
 
     res = []
     for ii in range(len(a)):
