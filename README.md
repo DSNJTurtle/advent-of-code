@@ -9,5 +9,6 @@ All rights and kudos for the riddles go to https://adventofcode.com
 * [Day 5](https://adventofcode.com/2023/day/5)
 * [Day 6](https://adventofcode.com/2023/day/6)
 * [Day 7](https://adventofcode.com/2023/day/7)
+* [Day 8](https://adventofcode.com/2023/day/8)
 
 See also [advent-of-code-data](https://github.com/wimglenn/advent-of-code-data#quickstart).
