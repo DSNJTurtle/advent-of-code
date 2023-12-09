@@ -2,7 +2,7 @@
 
 All rights and kudos for the riddles go to https://adventofcode.com
 
-Adapt the `year` and `day` in the following url to see the riddle of the day:
+Adapt the `<year>` and `<day>` in the following url to see the riddle of the day:
 `https://adventofcode.com/<year>/day/<day>`
 
 ## Links
