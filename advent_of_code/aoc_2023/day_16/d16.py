@@ -36,7 +36,7 @@ def energised_tiles_from_starting_position(grid, start_pos, start_d):
                 case "\\":
                     d = -(d * 1j).conjugate()  # complex(im,re)
                 case None:
-                    break  # skip "."
+                    break  # reached end
 
             # pgrid.show()
 
