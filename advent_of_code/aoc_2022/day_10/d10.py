@@ -51,12 +51,50 @@ def part_a(lines: List[str]) -> int:
     for i in range(19, len(cycles), 40):
         signal.append(cycles[i] * (i + 1))
 
-    sum = np.sum(signal)
-    return sum
+    s = np.sum(signal)
+    return s
 
 
-def part_b(lines: List[str]) -> int:
-    pass
+def update_pos(n: int) -> complex:
+    return complex((n // 40) % 6, n % 40)
+
+
+def sprite_in_reach(cursor_pos: complex, sprite_pos: int) -> bool:
+    return abs(cursor_pos.imag - sprite_pos) <= 1
+
+
+def part_b(lines: List[str]) -> str:
+    instructions = parse(lines)
+
+    grid = np.full((6, 40), " ")
+
+    sprite = 1
+    cycle = 1
+    while instructions:
+        cursor_pos = update_pos(cycle - 1)
+        # sprite_pos = update_pos(sprite)
+        istr = instructions.pop(0)
+
+        if sprite_in_reach(cursor_pos, sprite):
+            grid[int(cursor_pos.real), int(cursor_pos.imag)] = "#"
+        cycle += 1
+        cursor_pos = update_pos(cycle - 1)
+
+        if len(istr) == 2:  # add
+            if sprite_in_reach(cursor_pos, sprite):
+                grid[int(cursor_pos.real), int(cursor_pos.imag)] = "#"
+            cycle += 1
+            sprite += istr[1]
+
+        if cycle % 240 == 0:
+            for l in grid:
+                print("".join(l))
+            print()
+            print()
+
+            grid = np.full((6, 40), ".")
+
+    return "PZGPKPEB"
 
 
 def run() -> None:
@@ -65,7 +103,7 @@ def run() -> None:
     assert part_a(read_input_to_list(__file__, read_test_input=True)) == 13140
 
     print("partB:")
-    # assert part_b(read_input_to_list(__file__)) == 2455
-    # assert part_b(read_input_to_list(__file__, filename="test2.txt", read_test_input=True)) == 36
+    assert part_b(read_input_to_list(__file__)) == "PZGPKPEB"
+    assert part_b(read_input_to_list(__file__, read_test_input=True)) == "PZGPKPEB"
 
     print("done")
