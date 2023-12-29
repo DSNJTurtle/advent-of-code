@@ -1,3 +1,21 @@
+## 1.3.0 (2023-12-29)
+
+### Feat
+
+- finalize 2023
+- 2022 day 11
+- day 20
+- day 19
+- day 14
+- day 13
+- day 18
+- day 17
+
+### Fix
+
+- improve d17 with own dijkstra
+- improve day 16
+
 ## 1.2.0 (2023-12-16)
 
 ### Feat
