@@ -1,3 +1,6 @@
+[project]
+requires-python = ">3.10"
+
 [tool.poetry]
 name = "advent-of-code"
 version = "1.3.0"
@@ -7,7 +10,7 @@ readme = "README.md"
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.12"
 pandas = ">=2.1.3"
 numpy = ">=1.26.2"
 seaborn = ">=0.13.0"
@@ -21,24 +24,33 @@ sympy = "^1.12"
 
 
 [tool.poetry.group.dev.dependencies]
-pytest = ">=7.4.3"
-black = ">=23.11.0"
-pre-commit = ">=3.5.0"
+pytest = ">8.1.0"
+pre-commit = ">=3.6.0"
 commitizen = ">=3.12.0"
-isort = "^5.12.0"
+ruff = ">=0.3.0"
+pytype = ">=2024.2.27"
 
-[tool.black]
-line-length = 110
-force-exclude = """
-(
-    | ^/3 # exclude folder oncreated by GitHub actions
-)
-"""
+[tool.pytype]
+inputs = ['advent_of_code']
+jobs = 'auto'
 
-[tool.isort]
-profile = "black"
-skip = [".gitignore", "3"]
-src_paths = ["advent_of_code", "tests"]
+[tool.ruff]
+line-length = 120
+src = ["advent_of_code","tests"]
+preview = true
+
+[tool.ruff.lint]
+select = ["E3","E4","E7","E9","F","D"]
+extend-select = ["B","A","SIM","I","D204","D209","D213","D410","D413","W293","W505","PD","NPY"]
+extend-ignore = ["D212","D100","D104","PD008","PD901","PD010","PD101"]
+extend-fixable = ["D","W505","W293"]
+preview = true
+
+[tool.ruff.format]
+preview = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 
 [tool.commitizen]
 name = "cz_conventional_commits"

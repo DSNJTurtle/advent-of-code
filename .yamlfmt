@@ -1,0 +1,5 @@
+include: [".pre-commit-config.yaml"]
+formatter:
+    type: basic
+    retain_line_breaks_single: true
+    eof_newline: true

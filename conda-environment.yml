@@ -1,8 +1,7 @@
 name: advent-of-code
 channels:
   - conda-forge
-  - defaults
+  - nodefaults
 dependencies:
-  - python=3.11
+  - python=3.12
   - pip
-  - pipx=1.2.1
