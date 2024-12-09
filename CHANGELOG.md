@@ -1,3 +1,9 @@
+## 1.4.0 (2024-12-09)
+
+### Feat
+
+- update python. use ruff and yamlfmt
+
 ## 1.3.0 (2023-12-29)
 
 ### Feat
