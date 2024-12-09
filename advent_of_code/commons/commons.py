@@ -7,7 +7,8 @@ from typing import Any, Callable, List
 
 
 def read_input_to_list(file: str, filename: str | None = None, read_test_input: bool = False) -> List[str]:
-    """Read input
+    """
+    Read input.
 
     Args:
         file: Filepath to caller
@@ -16,18 +17,16 @@ def read_input_to_list(file: str, filename: str | None = None, read_test_input: 
 
     Returns:
         List of strings per line in the file.
+
     """
-    if filename is not None:
-        f = filename
-    else:
-        f = "test.txt" if read_test_input else "input.txt"
+    f = filename if filename is not None else "test.txt" if read_test_input else "input.txt"
     filepath = os.path.join(Path(file).parent, f)
     with open(filepath, "r") as f:
         return [x.rstrip("\n") for x in f.readlines()]
 
 
 class Node:
-    """General node that accepts any dataclass data object"""
+    """General node that accepts any dataclass data object."""
 
     def __init__(self, data):
         assert is_dataclass(data)
@@ -37,7 +36,7 @@ class Node:
 
 
 class DoublyLinkedList:
-    """General doubly linked list"""
+    """General doubly linked list."""
 
     def __init__(self):
         self.head: Node | None = None

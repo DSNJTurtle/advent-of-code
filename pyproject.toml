@@ -42,7 +42,7 @@ preview = true
 [tool.ruff.lint]
 select = ["E3", "E4", "E7", "E9", "F", "D"]
 extend-select = ["B", "A", "SIM", "I", "D204", "D209", "D213", "D410", "D413", "W293", "W505", "PD", "NPY"]
-extend-ignore = ["D212", "D100", "D103", "D104", "PD008", "PD901", "PD010", "PD101"]
+extend-ignore = ["D212", "D100", "D102", "D103", "D104", "D105", "D107", "PD008", "PD901", "PD010", "PD101"]
 extend-fixable = ["D", "W505", "W293"]
 preview = true
 
