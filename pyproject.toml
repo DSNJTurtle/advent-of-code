@@ -20,7 +20,7 @@ networkx = ">=3.2.1"
 tqdm = ">=4.66.1"
 joblib = "^1.3.2"
 primefac = "^2.0.12"
-sympy = "^1.12"
+sympy = ">=1.12"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -36,14 +36,14 @@ jobs = 'auto'
 
 [tool.ruff]
 line-length = 120
-src = ["advent_of_code","tests"]
+src = ["advent_of_code", "tests"]
 preview = true
 
 [tool.ruff.lint]
-select = ["E3","E4","E7","E9","F","D"]
-extend-select = ["B","A","SIM","I","D204","D209","D213","D410","D413","W293","W505","PD","NPY"]
-extend-ignore = ["D212","D100","D104","PD008","PD901","PD010","PD101"]
-extend-fixable = ["D","W505","W293"]
+select = ["E3", "E4", "E7", "E9", "F", "D"]
+extend-select = ["B", "A", "SIM", "I", "D204", "D209", "D213", "D410", "D413", "W293", "W505", "PD", "NPY"]
+extend-ignore = ["D212", "D100", "D103", "D104", "PD008", "PD901", "PD010", "PD101"]
+extend-fixable = ["D", "W505", "W293"]
 preview = true
 
 [tool.ruff.format]

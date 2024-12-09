@@ -1,17 +1,13 @@
-from __future__ import annotations
-
-from typing import List, Tuple
-
 import numpy as np
 import sympy
 
 from advent_of_code.commons.commons import read_input_to_list
 
 
-def get_particles(lines: List[str]):
+def get_particles(lines: list[str]):
     particles = []
-    for l in lines:
-        p = l.split("@")
+    for line in lines:
+        p = line.split("@")
         pos = np.array([int(pos.strip()) for pos in p[0].split(",")])
         vel = np.array([int(pos.strip()) for pos in p[1].split(",")])
         particles.append((pos, vel))
@@ -82,11 +78,11 @@ def compute_x(particle, t, t0):
     return x
 
 
-def in_xy_boundary(x, area_min_max: Tuple[int, int]):
+def in_xy_boundary(x, area_min_max: tuple[int, int]):
     return area_min_max[0] <= x[0] <= area_min_max[1] and area_min_max[0] <= x[1] <= area_min_max[1]
 
 
-def part_a(lines: List[str], area_min_max: Tuple[int, int]) -> int:
+def part_a(lines: list[str], area_min_max: tuple[int, int]) -> int:
     particles = get_particles(lines)
     particles_meet = []
     for i in range(len(particles) - 1):
@@ -102,7 +98,7 @@ def part_a(lines: List[str], area_min_max: Tuple[int, int]) -> int:
     return len(particles_meet)
 
 
-def part_b(lines: List[str]) -> int:
+def part_b(lines: list[str]) -> int:
     particles = get_particles(lines)
 
     # symbolic solution
