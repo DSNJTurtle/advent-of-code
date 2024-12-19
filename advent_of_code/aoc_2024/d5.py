@@ -2,8 +2,11 @@ from functools import cmp_to_key, partial
 
 from advent_of_code.commons.commons import read_input_to_list
 
+page_order_dict = dict[int, list[int]]
+page = list[int]
 
-def split_input(lines: list[str]):
+
+def split_input(lines: list[str]) -> tuple[page_order_dict, page_order_dict, list[page]]:
     ordering = {}
     pages = []
     for x in lines:
@@ -24,7 +27,7 @@ def split_input(lines: list[str]):
     return left_of, right_of, pages
 
 
-def left_right_ordering(left_of: dict[int, list[int]]) -> tuple[dict[int, list[int]], dict[int, list[int]]]:
+def left_right_ordering(left_of: page_order_dict) -> tuple[page_order_dict, page_order_dict]:
     right_of = {}
     for k, v in left_of.items():
         for x in v:
@@ -36,7 +39,7 @@ def left_right_ordering(left_of: dict[int, list[int]]) -> tuple[dict[int, list[i
     return left_of, right_of
 
 
-def page_comparator(x, y, left_of, right_of):
+def page_comparator(x: int, y: int, left_of: page_order_dict, right_of: page_order_dict) -> int:
     _r = right_of.get(x)
     _l = left_of.get(x)
     if _l is not None and y in _l:
