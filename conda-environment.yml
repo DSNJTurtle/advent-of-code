@@ -1,7 +1,0 @@
-name: advent-of-code
-channels:
-  - conda-forge
-  - nodefaults
-dependencies:
-  - python=3.12
-  - pip
